@@ -11,6 +11,10 @@ const router = express.Router();
 //signup
 router.post("/signup", validateBody(schemas.signupSchema), controllerWrapper(controller.signup));
 
+router.get("/verify/:verificationToken", controllerWrapper(controller.verify));
+
+router.post("/verify", validateBody(schemas.emailSchema), controllerWrapper(controller.resendVerifyEmail))
+
 //login
 router.post("/login", validateBody(schemas.loginSchema), controllerWrapper(controller.login));
 
